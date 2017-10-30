@@ -11,7 +11,8 @@
 
 
 #### 安装方法
-- ```npm install -g flash-cli```
+- ```git clone https://github.com/water-wheel/flash-cli.git```
+- ```cd flash-cli && npm link```
 
 
 #### 使用方法
