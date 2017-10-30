@@ -1,0 +1,18 @@
+{
+  "name": "flash-cli",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "flash": "index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "colors": "^1.1.2",
+    "ejs": "^2.5.7",
+    "inquirer": "^3.3.0",
+    "mkdirp": "^0.5.1",
+    "shelljs": "^0.7.8"
+  }
+}
