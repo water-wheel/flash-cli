@@ -7,13 +7,16 @@ const ejs = require('ejs');
 const mkdirp = require('mkdirp');
 const shelljs = require('shelljs');
 
+//欢迎语
 console.log("\n" + "Hello World, I'm a flash-cli".magenta + "\n");
 console.log("It's just a test".red + "\n");
 
+//常量
 const ENCODE = 'utf-8';
 const BUILD_PATH = './build';
 const BUILD_FILE_TYPE = '.html';
 
+//用户交互问题列表
 const question = [
 	{
 		type: 'input',
@@ -70,6 +73,7 @@ const question = [
 	}
 ];
 
+//交互
 inquirer.prompt(question).then(answer => {
 
 	const fileName = `${answer.fileName}${BUILD_FILE_TYPE}`;
@@ -80,6 +84,7 @@ inquirer.prompt(question).then(answer => {
 
 });
 
+//创建文件
 let createFile = (data, fileName) => {
 
 	let tpl = fs.readFileSync(__dirname + '/tpl.html', ENCODE);
@@ -90,6 +95,8 @@ let createFile = (data, fileName) => {
 
 };
 
+
+//打开所创建的文件
 let openFile = (path) => {
 
 	if(process.platform == 'darwin'){
