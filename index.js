@@ -2,13 +2,14 @@
 
 require('colors');
 const fs = require('fs');
+const path = require('path');
 const inquirer = require('inquirer');
 const ejs = require('ejs');
 const mkdirp = require('mkdirp');
 const shelljs = require('shelljs');
 
 //欢迎语
-console.log("\n" + "Hello World, I'm a flash-cli".magenta + "\n");
+console.log("\n" + "Hello World, I'm flash-cli".magenta + "\n");
 console.log("It's just a test".red + "\n");
 
 //常量
@@ -80,7 +81,7 @@ inquirer.prompt(question).then(answer => {
 	
 	createFile(answer, fileName);
 
-	openFile(`${BUILD_PATH}/${fileName}`)
+	openFile(`${BUILD_PATH}/${fileName}`);
 
 });
 
@@ -97,16 +98,23 @@ let createFile = (data, fileName) => {
 
 
 //打开所创建的文件
-let openFile = (path) => {
+let openFile = buildFilePath => {
 
+	//mac 
 	if(process.platform == 'darwin'){
-		shelljs.exec(`open ${path}`);
-	} else if(process.platform == 'win32') {
-		shelljs.exec(`start ${path}`);
+		shelljs.exec(`open ${buildFilePath}`);
+	} else if(process.platform == 'win32') { //windows
+		shelljs.exec(`start ${buildFilePath}`);
 	} else {
 		console.log('This platform is ' + process.platform);
 	}
 
+	endTip(buildFilePath);
+};
+
+//结束语
+const endTip = buildFilePath => {
+	console.log("\n" + "build file: " + (path.resolve(buildFilePath)).magenta + "\n");
 };
 
 
